@@ -60,8 +60,3 @@ class CleanerTest < Minitest::Test
     assert_equal "00456", result
   end
 end
-
-  # def test_it_formats_phone_numbers_into_10_digits
-  #   skip
-  #   homephone = 802-863-8374
-  #   assert_equal "8028638374",

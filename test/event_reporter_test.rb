@@ -8,4 +8,6 @@ class EventReporterTest < Minitest::Test
     report = EventReporter.new
   end
 
+  
+
 end

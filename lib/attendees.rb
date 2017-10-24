@@ -1,6 +1,7 @@
+
 class Attendee
 
-  attr_reader :number,
+  attr_reader :id,
               :reg_date,
               :first_name,
               :last_name,
@@ -12,7 +13,7 @@ class Attendee
               :zipcode
 
   def initialize(report)
-    @number = report[:' ']
+    @id = report[:id]
     @reg_date = report[:regdate]
     @first_name = report[:first_name]
     @last_name = report[:last_name]
