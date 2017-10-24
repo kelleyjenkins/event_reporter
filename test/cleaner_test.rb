@@ -20,10 +20,9 @@ class CleanerTest < Minitest::Test
   end
 
   def test_it_cleans_phone_number
-    skip
     clean = Cleaner.new
 
-    result = clean.clean_phone(802*863*8374)
+    result = clean.clean_phone("802*863*8374")
 
     assert_equal "8028638374", result
   end

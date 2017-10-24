@@ -36,4 +36,9 @@ class QueueTest < Minitest::Test
     assert_equal [], queue.list.clear
   end
 
+  def test_it_prints_data
+    queue = Queue.new
+
+    
+
 end

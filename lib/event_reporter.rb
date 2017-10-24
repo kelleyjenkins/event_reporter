@@ -1,14 +1,19 @@
 require "csv"
 require 'pry'
-
+require './lib/attendees'
 puts "Welcome!"
 
 class EventReporter
+  attr_reader :attendees
 
+  def initialize
+    @attendees = []
+  end
 
-  def load_file(file)
-    file = CSV.open "full_event_attendees.csv", headers: true, header_converters: :symbol
-    puts "#{file} loaded."
+  def load_file(file = "full_event_attendees.csv")
+    file = CSV.foreach file, headers: true, header_converters: :symbol do |row|
+      @attendees << Attendee.new(row)
+    end
   end
 
 end

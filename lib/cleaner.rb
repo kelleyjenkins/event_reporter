@@ -12,7 +12,7 @@ class Cleaner
   def clean_phone(homephone)
     if homephone.length > 10
     homephone.gsub!(/[^0-9A-Za-z]/, '')
-  elsif homephone.length < 10
+    elsif homephone.length < 10
       homephone.to_s.rjust(10, "0")
     elsif homephone.nil?
       homephone = "0000000000"
