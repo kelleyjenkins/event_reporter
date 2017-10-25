@@ -14,6 +14,15 @@ class EventReporterTest < Minitest::Test
     refute report.attendees.empty?
   end
 
+  def test_it_adds_first_name_to_queue
+    report = EventReporter.new
+
+    report.load_file
+    report.find(first_name, "John")
+
+    assert_equal "John", queue[0]
+  end
+
 
 
 end

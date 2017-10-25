@@ -1,3 +1,4 @@
+require './lib/cleaner'
 
 class Attendee
 
@@ -12,16 +13,18 @@ class Attendee
               :state,
               :zipcode
 
-  def initialize(report)
-    @id = report[:id]
-    @reg_date = report[:regdate]
-    @first_name = report[:first_name]
-    @last_name = report[:last_name]
-    @email = report[:email_address]
-    @phone = report[:homephone]
-    @street = report[:street]
-    @city = report[:city]
-    @state = report[:state]
-    @zipcode = report[:zipcode]
+  def initialize(row)
+    clean = Cleaner.new
+    
+    @id = row[:id]
+    @reg_date = row[:regdate]
+    @first_name = clean.clean_first_name(row[:first_name])
+    @last_name = clean.clean_last_name(row[:last_name])
+    @email = row[:email_address]
+    @phone = clean.clean_phone(row[:homephone])
+    @street = clean.clean_street(row[:street])
+    @city = clean.clean_city(row[:city])
+    @state = clean.clean_state(row[:state])
+    @zipcode = clean.clean_zipcode(row[:zipcode])
   end
 end

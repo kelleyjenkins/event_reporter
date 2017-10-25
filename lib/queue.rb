@@ -1,7 +1,6 @@
 class Queue
   attr_reader :list
 
-
   def initialize
     @list = []
   end
@@ -17,4 +16,5 @@ class Queue
   def clear
     @list.clear
   end
+
 end

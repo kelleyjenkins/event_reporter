@@ -21,21 +21,33 @@ class Cleaner
   end
 
   def clean_street(street)
+    if street == nil
+      "UNKONWN"
+    else
     street = street.split.each do |word|
       word.capitalize!
     end
       street.join(' ')
+    end
   end
 
   def clean_city(city)
+    if city == nil
+      "UNKOWN"
+    else
     city = city.split.each do |word|
       word.capitalize!
     end
       city.join(' ')
+    end
   end
 
   def clean_state(state)
+    if state == nil
+      "UNKOWN"
+    else
     state.upcase
+    end
   end
 
   def clean_zipcode(zipcode)
