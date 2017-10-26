@@ -13,16 +13,39 @@ loop do
     split = input.split(' ')
 
     if split[0] == "load"
-        e.load_file
-    # puts "file loaded"
+      e.load_file
     end
 
     if split[0] == "find" && split[1] == "first_name"
-        e.find_first_name(split[2])
+      e.find_first_name(split[2])
     end
 
     if split[0] == "find" && split[1] == "last_name"
-        e.find_last_name(split[2])
+      e.find_last_name(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "email"
+      e.find_email(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "phone"
+      e.find_phone(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "street"
+      e.find_street(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "city"
+      e.find_city(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "state"
+      e.find_state(split[2])
+    end
+
+    if split[0] == "find" && split[1] == "zipcode"
+      e.find_zip(split[2])
     end
 
     if input == "queue clear"
@@ -36,38 +59,31 @@ loop do
     if input == "help"
       print "The commands you can use are:
              load <file>
+             find <attribute> <name>
              queue count
              queue clear
-             find <attribute> <name>\n"
+             queue print
+             queue print by <attribute>
+             queue save to <filename.csv>
+             queue export htmp <filename.csv>
+             help
+             help <command>\n"
     end
 
-    if input == "queue count"
-
-      #
-      # elsif input == "queue count"
-      #   e.count
-      # elsif input == "queue clear"
-      #   input.clear
-      # elseif input == "exit"
-      # break
+    if input == "help queue count"
+      puts "The queue count fuction will tell you how many entries are in your queue."
     end
-# end
-# loop do
-#     print "Enter a command."
-#     input = gets.chomp.split(' ')
-#     @request = input[0]
-#     parameter = input[1]
-#     argument = input[2]
-#     if @request == "load"
-#       load_file(input[1])
-#     end
-#     break
-    # elsif input.split(' ').first == "find" && input.include?("first_name")
-    #   find_first_name
-    # elsif input == "queue count"
-    #   input.queue.count
-    # elsif input == "queue clear"
-    #   input.clear
-    # elseif input == "exit"
-    # break
-  # end
+
+    if input == "help queue print"
+      puts "The queue print fuction will print the entries in your queue."
+    end
+
+    if input == "queue print"
+      e.print_attendees
+    end
+
+    if input.downcase == "exit"
+      break
+    end
+
+  end
