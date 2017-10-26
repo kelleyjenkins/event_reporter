@@ -6,12 +6,14 @@ require './lib/queue'
 puts "Welcome!"
 
 class EventReporter
-  attr_reader :attendees
+  attr_reader :attendees,
               :queue
 
   def initialize
     @attendees = []
-    @queue = Queue.new
+    @queue = []
+    @attribute = :reg_date
+
   end
 
   def load_file(file = "full_event_attendees.csv")
@@ -20,62 +22,82 @@ class EventReporter
     end
   end
 
-  def find(first_name, criteria)
-    first_names = @attendees.select do |attendee|
-       criteria == attendee.first_name
-     end
-     @queue << first_names
+   def add_attendee(attendee)
+     @queue << attendee
    end
 
-   def find(last_name, criteria)
-     last_names = @attendees.select do |attendee|
-       criteria == attendee.last_name
-     end
-     @queue << last_names
+   def count
+     @queue.count
    end
 
-  def find(email)
-    emails = @attendees.select do |attendee|
-       criteria == attendee.email
-    end
-    @queue << emails
-  end
+   def clear
+     @queue = []
+   end
 
-   def find(phone)
-    phones = @attendees.select do |attendee|
-      criteria == attendee.phone
-    end
-    @queue << phones
-  end
+   def find_first_name(criteria)
+     @queue = @attendees.select do |attendee|
+       attendee.first_name == criteria
+     end
+   end
 
-  def find(street)
-    streets = @attendees.select do |attendee|
-      criteria == attendee.street
+      def find_last_name(criteria)
+      @queue = @attendees.select do |attendee|
+        attendee.last_name == criteria
+      end
     end
-    @queue << streets
-  end
+ end
 
-  def find(city)
-    cities = @attendees.select do |attendee|
-      criteria == attendee.city
-    end
-    @queue << cities
-  end
 
-  def find(state)
-    states = @attendees.select do |attendee|
-      criteria == attendee.state
-    end
-    @queue << states
-  end
 
-  def find(zipcode)
-    zips = @attendees.select do |attendee|
-      criteria == attendee.zipcode
-    end
-    @queue << zips
-  end
-end
+  #
+  #  def find_last_name(criteria)
+  #    last_names = @attendees.select do |attendee|
+  #      criteria == attendee.last_name
+  #    end
+  #    @queue << last_names
+  #  end
+  #
+  # def find_email(criteria)
+  #   emails = @attendees.select do |attendee|
+  #      criteria == attendee.email
+  #   end
+  #   @queue << emails
+  # end
+  #
+  #  def find_phone(criteria)
+  #   phones = @attendees.select do |attendee|
+  #     criteria == attendee.phone
+  #   end
+  #   @queue << phones
+  # end
+  #
+  # def find_street(criteria)
+  #   streets = @attendees.select do |attendee|
+  #     criteria == attendee.street
+  #   end
+  #   @queue << streets
+  # end
+  #
+  # def find_city(criteria)
+  #   cities = @attendees.select do |attendee|
+  #     criteria == attendee.city
+  #   end
+  #   @queue << cities
+  # end
+  #
+  # def find_state(criteria)
+  #   states = @attendees.select do |attendee|
+  #     attendee.state == criteria
+  #   end
+  #   @queue << states
+  # end
+  #
+  # def find(zipcode)
+  #   zips = @attendees.select do |attendee|
+  #     attendee.zipcode == criteria
+  #   end
+  #   @queue << zips
+  # end
 
 
 
