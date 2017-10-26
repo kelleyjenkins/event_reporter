@@ -35,6 +35,4 @@ class QueueTest < Minitest::Test
 
     assert_equal [], queue.list.clear
   end
-
-
 end

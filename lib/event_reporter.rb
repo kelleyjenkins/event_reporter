@@ -1,6 +1,6 @@
 require "csv"
 require 'pry'
-require './lib/attendees'
+require './lib/attendee'
 require './lib/queue'
 
 puts "Welcome!"
@@ -74,7 +74,7 @@ class EventReporter
     end
   end
 
-  def find_zip(zipcode)
+  def find_zip(criteria)
     @queue = @attendees.select do |attendee|
       attendee.zipcode == criteria
     end
@@ -82,9 +82,9 @@ class EventReporter
 
 
   def print_attendees
-    print "LAST NAME  FIRST NAME              EMAIL                ZIPCODE      CITY      STATE   ADDRESS   PHONE\n"
-    @queue.each do |attendee|
-    print "#{attendee.last_name}    #{attendee.first_name}     #{attendee.email}     #{attendee.zipcode}     #{attendee.city}     #{attendee.state}     #{attendee.street}     #{attendee.phone}\n"
-    end
+    print "LAST NAME  FIRST NAME              EMAIL                ZIPCODE        CITY      STATE   ADDRESS   PHONE\n"
+      @queue.each do |attendee|
+        print "#{attendee.last_name}    #{attendee.first_name}     #{attendee.email}     #{attendee.zipcode}     #{attendee.city}     #{attendee.state}     #{attendee.street}     #{attendee.phone}\n"
+      end
   end
 end

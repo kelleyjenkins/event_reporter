@@ -1,9 +1,10 @@
 require 'csv'
-require './lib/attendees'
+require './lib/attendee'
 require './lib/queue'
 require './lib/event_reporter'
 require 'pry'
 
+class Repl
 
 e = EventReporter.new
 
@@ -85,5 +86,5 @@ loop do
     if input.downcase == "exit"
       break
     end
-
   end
+end
